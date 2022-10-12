@@ -358,6 +358,27 @@ export const asyncRouterMap = [
       }
     ]
   },
+  {
+    path:'/combine',
+    component: Layout,
+    redirect: '/ums/admin',
+    name: 'combine',
+    meta: {title: '聚合', icon: 'ums'},
+    children: [
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('@/views/combine/register/index'),
+        meta: {title: '开通用户', icon: 'ums-admin'}
+      },
+      {
+        path: 'show',
+        name: 'show',
+        component: () => import('@/views/ums/admin/index'),
+        meta: {title: '生成二维码', icon: 'ums-admin'}
+      }
+    ]
+  },
   {path: '*', redirect: '/404', hidden: true}
 ]
 
