@@ -3,85 +3,52 @@
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
       <span>数据列表</span>
-      <el-button
-        size="mini"
-        @click="handleAdd"
-        class="btn-add">添加
-      </el-button>
     </el-card>
-    <div class="table-container">
-      <el-table ref="returnReasonTable"
-                :data="list"
-                style="width: 100%;"
-                @selection-change="handleSelectionChange"
-                v-loading="listLoading" border>
-        <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="80" align="center">
-          <template slot-scope="scope">{{scope.row.id}}</template>
-        </el-table-column>
-        <el-table-column label="原因类型" align="center">
-          <template slot-scope="scope">{{scope.row.name}}</template>
-        </el-table-column>
-        <el-table-column label="排序" width="100" align="center">
-          <template slot-scope="scope">{{scope.row.sort }}</template>
-        </el-table-column>
-        <el-table-column label="是否可用" align="center">
-          <template slot-scope="scope">
-            <el-switch
-              v-model="scope.row.status"
-              @change="handleStatusChange(scope.$index,scope.row)"
-              :active-value="1"
-              :inactive-value="0">
-            </el-switch>
-          </template>
-        </el-table-column>
-        <el-table-column label="添加时间" width="180" align="center">
-          <template slot-scope="scope">{{scope.row.createTime | formatCreateTime}}</template>
-        </el-table-column>
-        <el-table-column label="操作" width="160" align="center">
-          <template slot-scope="scope">
-            <el-button
-              size="mini"
-              @click="handleUpdate(scope.$index, scope.row)">编辑</el-button>
-            <el-button
-              size="mini"
-              @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
+
+    <div style="margin-top: 15px">
+      <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
+        <el-form-item label="代理商编号："/>
+        <el-form-item label="代理商名称："/>
+        <el-form-item label="上级代理商："/>
+        <el-form-item label="代理商类型："/>
+      </el-form>
     </div>
+
+    <div style="margin-top: 15px">
+      <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
+        <el-form-item label="9999.99"/>
+        <el-form-item label="9999.99"/>
+        <el-form-item label="9999.99"/>
+        <el-form-item label="9999.99"/>
+      </el-form>
+    </div>
+
+    <div style="margin-top: 15px">
+      <el-form  :model="listQuery" size="small" label-width="140px">
+        <el-form-item label="代理商名称:">
+          <el-input style="width: 250px"></el-input>
+        </el-form-item>
+        <el-form-item label="提现类型:">
+          <el-input style="width: 250px"></el-input>
+        </el-form-item>
+        <el-form-item label="提现金额:">
+          <el-input style="width: 250px"></el-input>
+        </el-form-item>
+      </el-form>
+    </div>
+
     <div class="batch-operate-container">
-      <el-select
-        size="small"
-        v-model="operateType" placeholder="批量操作">
-        <el-option
-          v-for="item in operateOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
+
       <el-button
         style="margin-left: 20px"
         class="search-button"
         @click="handleBatchOperate"
         type="primary"
         size="small">
-        确定
+        申请提现
       </el-button>
     </div>
-    <div class="pagination-container">
-      <el-pagination
-        background
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        layout="total, sizes,prev, pager, next,jumper"
-        :current-page.sync="listQuery.pageNum"
-        :page-size="listQuery.pageSize"
-        :page-sizes="[5,10,15]"
-        :total="total">
-      </el-pagination>
-    </div>
+
     <el-dialog
       title="添加退货原因"
       :visible.sync="dialogVisible" width="30%">

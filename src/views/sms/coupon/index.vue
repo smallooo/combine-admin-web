@@ -20,10 +20,19 @@
       </div>
       <div style="margin-top: 15px">
         <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-          <el-form-item label="优惠券名称：">
+          <el-form-item label="平台订单号：">
             <el-input v-model="listQuery.name" class="input-width" placeholder="优惠券名称"></el-input>
           </el-form-item>
-          <el-form-item label="优惠券类型：">
+          <el-form-item label="商户名称：">
+            <el-input v-model="listQuery.name" class="input-width" placeholder="优惠券名称"></el-input>
+          </el-form-item>
+          <el-form-item label="请求时间：">
+            <el-input v-model="listQuery.name" class="input-width" placeholder="优惠券名称"></el-input>
+          </el-form-item>
+          <el-form-item label="商户联系方式：">
+            <el-input v-model="listQuery.name" class="input-width" placeholder="优惠券名称"></el-input>
+          </el-form-item>
+          <el-form-item label="业务类型：">
             <el-select v-model="listQuery.type" placeholder="全部" clearable class="input-width">
               <el-option v-for="item in typeOptions"
                          :key="item.value"
@@ -47,32 +56,41 @@
                 @selection-change="handleSelectionChange"
                 v-loading="listLoading" border>
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="100" align="center">
+        <el-table-column label="平台订单号" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="优惠劵名称" align="center">
+        <el-table-column label="商户订单号" align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
-        <el-table-column label="优惠券类型" width="100" align="center">
+        <el-table-column label="请求时间" width="100" align="center">
           <template slot-scope="scope">{{scope.row.type | formatType}}</template>
         </el-table-column>
-        <el-table-column label="可使用商品" width="100" align="center">
+        <el-table-column label="商户名称" width="100" align="center">
           <template slot-scope="scope">{{scope.row.useType | formatUseType}}</template>
         </el-table-column>
-        <el-table-column label="使用门槛" width="140" align="center">
+        <el-table-column label="商户手机号" width="140" align="center">
           <template slot-scope="scope">满{{scope.row.minPoint}}元可用</template>
         </el-table-column>
-        <el-table-column label="面值" width="100" align="center">
+        <el-table-column label="业务类型" width="100" align="center">
           <template slot-scope="scope">{{scope.row.amount}}元</template>
         </el-table-column>
-        <el-table-column label="适用平台" width="100" align="center">
+        <el-table-column label="支付金额" width="100" align="center">
           <template slot-scope="scope">{{scope.row.platform | formatPlatform}}</template>
         </el-table-column>
-        <el-table-column label="有效期" width="180" align="center">
+        <el-table-column label="支付状态" width="100" align="center">
+          <template slot-scope="scope">{{scope.row.endTime | formatStatus}}</template>
+        </el-table-column>
+        <el-table-column label="银行名称" width="180" align="center">
           <template slot-scope="scope">{{scope.row.startTime|formatDate}}至{{scope.row.endTime|formatDate}}</template>
         </el-table-column>
-        <el-table-column label="状态" width="100" align="center">
-          <template slot-scope="scope">{{scope.row.endTime | formatStatus}}</template>
+        <el-table-column label="交易卡号" width="180" align="center">
+          <template slot-scope="scope">{{scope.row.startTime|formatDate}}至{{scope.row.endTime|formatDate}}</template>
+        </el-table-column>
+        <el-table-column label="门店号" width="180" align="center">
+          <template slot-scope="scope">{{scope.row.startTime|formatDate}}至{{scope.row.endTime|formatDate}}</template>
+        </el-table-column>
+        <el-table-column label="回调状态" width="180" align="center">
+          <template slot-scope="scope">{{scope.row.startTime|formatDate}}至{{scope.row.endTime|formatDate}}</template>
         </el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template slot-scope="scope">
@@ -82,10 +100,7 @@
             <el-button size="mini"
                        type="text"
                        @click="handleUpdate(scope.$index, scope.row)">
-              编辑</el-button>
-            <el-button size="mini"
-                       type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              补发回调</el-button>
           </template>
         </el-table-column>
       </el-table>

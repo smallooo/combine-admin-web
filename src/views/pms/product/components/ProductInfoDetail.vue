@@ -1,13 +1,13 @@
 <template>
   <div style="margin-top: 50px">
     <el-form :model="value" :rules="rules" ref="productInfoForm" label-width="120px" style="width: 600px" size="small">
-      <el-form-item label="商品分类：" prop="productCategoryId">
-        <el-cascader
-          v-model="selectProductCateValue"
-          :options="productCateOptions">
-        </el-cascader>
-      </el-form-item>
-      <el-form-item label="商品名称：" prop="name">
+<!--      <el-form-item label="商品分类：" prop="productCategoryId">-->
+<!--        <el-cascader-->
+<!--          v-model="selectProductCateValue"-->
+<!--          :options="productCateOptions">-->
+<!--        </el-cascader>-->
+<!--      </el-form-item>-->
+      <el-form-item label="商户名称：" prop="name">
         <el-input v-model="value.name"></el-input>
       </el-form-item>
       <el-form-item label="副标题：" prop="subTitle">
@@ -33,7 +33,7 @@
           type="textarea"
           placeholder="请输入内容"></el-input>
       </el-form-item>
-      <el-form-item label="商品货号：">
+      <el-form-item label="商品货号222：">
         <el-input v-model="value.productSn"></el-input>
       </el-form-item>
       <el-form-item label="商品售价：">

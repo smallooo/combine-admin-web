@@ -40,18 +40,18 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/pms/product',
     name: 'pms',
-    meta: {title: '商品', icon: 'product'},
+    meta: {title: '商户管理', icon: 'product'},
     children: [{
       path: 'product',
       name: 'product',
       component: () => import('@/views/pms/product/index'),
-      meta: {title: '商品列表', icon: 'product-list'}
+      meta: {title: '商户明细', icon: 'product-list'}
     },
       {
         path: 'addProduct',
         name: 'addProduct',
         component: () => import('@/views/pms/product/add'),
-        meta: {title: '添加商品', icon: 'product-add'}
+        meta: {title: '商户入驻', icon: 'product-add'}
       },
       {
         path: 'updateProduct',
@@ -134,7 +134,7 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/oms/order',
     name: 'oms',
-    meta: {title: '订单', icon: 'order'},
+    meta: {title: '代理商管理', icon: 'order'},
     children: [
       {
         path: 'order',
@@ -160,19 +160,19 @@ export const asyncRouterMap = [
         path: 'orderSetting',
         name: 'orderSetting',
         component: () => import('@/views/oms/order/setting'),
-        meta: {title: '订单设置', icon: 'order-setting'}
+        meta: {title: '代理商入住', icon: 'order-setting'}
       },
       {
         path: 'returnApply',
         name: 'returnApply',
         component: () => import('@/views/oms/apply/index'),
-        meta: {title: '退货申请处理', icon: 'order-return'}
+        meta: {title: '代理商收支明细', icon: 'order-return'}
       },
       {
         path: 'returnReason',
         name: 'returnReason',
         component: () => import('@/views/oms/apply/reason'),
-        meta: {title: '退货原因设置', icon: 'order-return-reason'}
+        meta: {title: '分润提现', icon: 'order-return-reason'}
       },
       {
         path: 'returnApplyDetail',
@@ -188,7 +188,7 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/sms/coupon',
     name: 'sms',
-    meta: {title: '营销', icon: 'sms'},
+    meta: {title: '订单管理', icon: 'sms'},
     children: [
       {
         path: 'flash',
@@ -221,7 +221,7 @@ export const asyncRouterMap = [
         path: 'coupon',
         name: 'coupon',
         component: () => import('@/views/sms/coupon/index'),
-        meta: {title: '优惠券列表', icon: 'sms-coupon'}
+        meta: {title: '交易订单明细', icon: 'sms-coupon'}
       },
       {
         path: 'addCoupon',
@@ -272,7 +272,7 @@ export const asyncRouterMap = [
         path: 'advertise',
         name: 'homeAdvertise',
         component: () => import('@/views/sms/advertise/index'),
-        meta: {title: '广告列表', icon: 'sms-ad'}
+        meta: {title: '订单分润明细', icon: 'sms-ad'}
       },
       {
         path: 'addAdvertise',
@@ -295,7 +295,7 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/ums/admin',
     name: 'ums',
-    meta: {title: '权限', icon: 'ums'},
+    meta: {title: '管理员', icon: 'ums'},
     children: [
       {
         path: 'admin',
@@ -363,19 +363,31 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/ums/admin',
     name: 'combine',
-    meta: {title: '聚合', icon: 'ums'},
+    meta: {title: '财务管理', icon: 'ums'},
     children: [
       {
         path: 'register',
         name: 'register',
         component: () => import('@/views/combine/register/index'),
-        meta: {title: '开通用户', icon: 'ums-admin'}
+        meta: {title: '代理商明细', icon: 'ums-admin'}
       },
       {
         path: 'show',
         name: 'show',
         component: () => import('@/views/ums/admin/index'),
-        meta: {title: '生成二维码', icon: 'ums-admin'}
+        meta: {title: '调整余额', icon: 'ums-admin'}
+      },
+      {
+        path: 'show',
+        name: 'show',
+        component: () => import('@/views/ums/admin/index'),
+        meta: {title: '提现明细', icon: 'ums-admin'}
+      },
+      {
+        path: 'show',
+        name: 'show',
+        component: () => import('@/views/ums/admin/index'),
+        meta: {title: '代理商日收益明细', icon: 'ums-admin'}
       }
     ]
   },
