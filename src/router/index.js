@@ -372,9 +372,9 @@ export const asyncRouterMap = [
         meta: {title: '代理商明细', icon: 'ums-admin'}
       },
       {
-        path: 'show',
-        name: 'show',
-        component: () => import('@/views/ums/admin/index'),
+        path: 'changeaccount',
+        name: 'changeaccount',
+        component: () => import('@/views/combine/register/index'),
         meta: {title: '调整余额', icon: 'ums-admin'}
       },
       {
