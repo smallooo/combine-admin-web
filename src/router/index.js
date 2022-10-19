@@ -310,52 +310,11 @@ export const asyncRouterMap = [
         meta: {title: '角色列表', icon: 'ums-role'}
       },
       {
-        path: 'allocMenu',
-        name: 'allocMenu',
-        component: () => import('@/views/ums/role/allocMenu'),
-        meta: {title: '分配菜单'},
-        hidden: true
-      },
-      {
-        path: 'allocResource',
-        name: 'allocResource',
-        component: () => import('@/views/ums/role/allocResource'),
-        meta: {title: '分配资源'},
-        hidden: true
-      },
-      {
-        path: 'menu',
-        name: 'menu',
-        component: () => import('@/views/ums/menu/index'),
-        meta: {title: '菜单列表', icon: 'ums-menu'}
-      },
-      {
-        path: 'addMenu',
-        name: 'addMenu',
-        component: () => import('@/views/ums/menu/add'),
-        meta: {title: '添加菜单'},
-        hidden: true
-      },
-      {
-        path: 'updateMenu',
-        name: 'updateMenu',
-        component: () => import('@/views/ums/menu/update'),
-        meta: {title: '修改菜单'},
-        hidden: true
-      },
-      {
         path: 'resource',
         name: 'resource',
         component: () => import('@/views/ums/resource/index'),
-        meta: {title: '资源列表', icon: 'ums-resource'}
+        meta: {title: '创建一级代理商', icon: 'ums-resource'}
       },
-      {
-        path: 'resourceCategory',
-        name: 'resourceCategory',
-        component: () => import('@/views/ums/resource/categoryList'),
-        meta: {title: '资源分类'},
-        hidden: true
-      }
     ]
   },
   {
@@ -372,15 +331,15 @@ export const asyncRouterMap = [
         meta: {title: '代理商明细', icon: 'ums-admin'}
       },
       {
-        path: 'show',
-        name: 'show',
-        component: () => import('@/views/ums/admin/index'),
+        path: 'modifybalance',
+        name: 'modifybalance',
+        component: () => import('@/views/finance/modifybalance/index'),
         meta: {title: '调整余额', icon: 'ums-admin'}
       },
       {
-        path: 'show',
-        name: 'show',
-        component: () => import('@/views/ums/admin/index'),
+        path: 'takeoutlist',
+        name: 'takeoutlist',
+        component: () => import('@/views/finance/takeoutlist/index'),
         meta: {title: '提现明细', icon: 'ums-admin'}
       },
       {
