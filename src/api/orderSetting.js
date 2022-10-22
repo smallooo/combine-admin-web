@@ -6,9 +6,9 @@ export function getOrderSetting(id) {
   })
 }
 
-export function updateOrderSetting(id,data) {
+export function createDelegateUser(id,data) {
   return request({
-    url:'/orderSetting/update/'+id,
+    url:'/hfshanghu/createuser/',
     method:'post',
     data:data
   })
