@@ -17,59 +17,79 @@
         <span>{{ "身份证" }}</span>
       </el-form-item>
       <el-form-item label="身份证号码：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input v-model="orderSetting.idno" class="input-width"/>
       </el-form-item>
       <el-form-item label="证件有效期：" prop="flashOrderOvertime">
-        <span>{{ "从:   " }}</span><el-input v-model="orderSetting.flashOrderOvertime" class="input-width-small"/>
+        <span>{{ "从:   " }}</span><el-input v-model="orderSetting.cert_begin_data" class="input-width-small"/>
         <el-row/>
-        <span>{{ "到:   " }}</span><el-input v-model="orderSetting.flashOrderOvertime" class="input-width-small"/>
+        <span>{{ "到:   " }}</span><el-input v-model="orderSetting.cert_end_date" class="input-width-small"/>
       </el-form-item>
 
 
       <el-form-item label="手机号：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input v-model="orderSetting.mobileno" class="input-width"/>
       </el-form-item>
       <el-form-item label="电子邮箱：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input v-model="orderSetting.email" class="input-width"/>
       </el-form-item>
       <el-form-item label="商户名称：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input v-model="orderSetting.idname" class="input-width"/>
       </el-form-item>
       <el-form-item label="商户经营省：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input v-model="orderSetting.prov" class="input-width"/>
       </el-form-item>
       <el-form-item label="商户经营市：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input v-model="orderSetting.area" class="input-width"/>
       </el-form-item>
       <el-form-item label="商户经营区：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input v-model="orderSetting.district" class="input-width"/>
       </el-form-item>
       <el-form-item label="详细地址：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input v-model="orderSetting.detailaddr" class="input-width"/>
       </el-form-item>
-      <el-form-item label="创建人：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
-      </el-form-item>
+
       <el-form-item label="状态：" prop="flashOrderOvertime">
         <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
       </el-form-item>
 
-      <el-form-item label="开户省市区：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+      <el-form-item label="开户所在省：" prop="flashOrderOvertime">
+        <el-input v-model="orderSetting.card_prov" class="input-width"/>
       </el-form-item>
-      <el-form-item label="开户银行：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+      <el-form-item label="开户所在市：" prop="flashOrderOvertime">
+        <el-input v-model="orderSetting.card_area" class="input-width"/>
+      </el-form-item>
+      <el-form-item label="开户银行名称：" prop="flashOrderOvertime">
+        <el-select v-model="orderSetting.bank_name"  placeholder="请选择" size="small" style="width: 80%">
+          <el-option
+            v-for="item in allRoleList"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id">
+          </el-option>
+        </el-select>
       </el-form-item>
       <el-form-item label="银行账户名称：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input v-model="orderSetting.bank_card_name" class="input-width"/>
       </el-form-item>
       <el-form-item label="银行账户号：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input v-model="orderSetting.card_no" class="input-width"/>
       </el-form-item>
 
       <el-form-item label="身份证照片上传：" prop="flashOrderOvertime">
-        <span>{{ "正面:   " }}</span>
+
+        <el-upload
+          :action="useOss?ossUploadUrl:minioUploadUrl"
+          :data="useOss?dataObj:null"
+          list-type="picture"
+          :multiple="false" :show-file-list="showFileList"
+          :file-list="fileList"
+          :before-upload="beforeUpload"
+          :on-remove="handleRemove"
+          :on-success="handleUploadSuccess"
+          :on-preview="handlePreview">
+          <span>{{ "正面:   " }}</span>
         <el-button size="small" type="primary">点击上传</el-button>
+        </el-upload>
 
         <span>{{ "反面:   " }}</span>
         <el-button size="small" type="primary">点击上传</el-button>
@@ -83,22 +103,6 @@
         <el-button size="small" type="primary">点击上传</el-button>
       </el-form-item>
 
-
-
-
-<!--      <el-form-item label="提现开关：" prop="flashOrderOvertime">-->
-<!--        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="提现费率：" prop="flashOrderOvertime">-->
-<!--        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="提现笔数费(元)：" prop="flashOrderOvertime">-->
-<!--        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="提现笔数费(元)：" prop="flashOrderOvertime">-->
-<!--        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>-->
-<!--      </el-form-item>-->
-
       <el-form-item>
         <el-button
           @click="confirm('orderSettingForm')"
@@ -109,7 +113,7 @@
       </el-form-item>
     </el-form>
   </el-card>
-<!--  <el-alert title=this. />-->
+
 </template>
 <script>
   import {getOrderSetting,createDelegateUser} from '@/api/orderSetting';
@@ -117,7 +121,38 @@
     id: null,
     username: "username",
     password: "password",
-    flashOrderOvertime: 0,
+    email: "email",
+    nickName: "nickName",
+    idname: "idname",
+    prov: "prov",
+    area: "area",
+    district: "district",
+    detailaddr: "detailaddr",
+    mobileno: "mobileno",
+    idno: "idno",
+    card_prov: "",
+    card_area: "",
+    cert_validity_type: "",
+    cert_begin_data: "",
+    cert_end_date: "",
+
+    prov_id: "",
+    area_id: "",
+    card_name: "",
+    card_no: "",
+    bank_name: "",
+    bank_card_name:"",
+    card_binding_phone_no: "",
+    id_img_front: "",
+    id_img_back: "",
+    card_img_front: "",
+    card_img_back: "",
+    switch_state: "",
+    fee_rate: "",
+    fix_amt: "",
+    out_fee_flag: "",
+
+    flashOrderOvertime: 0 ,
     normalOrderOvertime: 0,
     confirmOvertime: 0,
     finishOvertime: 0,
@@ -140,6 +175,7 @@
     data() {
       return {
         orderSetting: Object.assign({}, defaultOrderSetting),
+        allRoleList: [{id:"1", name:"中国银行"},{id:"2", name:"中国工商银行"},{id:"3", name:"中国建设银行"}],
       }
     },
     created(){
