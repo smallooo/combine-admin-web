@@ -140,14 +140,7 @@ export const asyncRouterMap = [
         path: 'order',
         name: 'order',
         component: () => import('@/views/oms/order/index'),
-        meta: {title: '订单列表', icon: 'product-list'}
-      },
-      {
-        path: 'orderDetail',
-        name: 'orderDetail',
-        component: () => import('@/views/oms/order/orderDetail'),
-        meta: {title: '订单详情'},
-        hidden:true
+        meta: {title: '代理商明细', icon: 'product-list'}
       },
       {
         path: 'deliverOrderList',
@@ -157,16 +150,28 @@ export const asyncRouterMap = [
         hidden:true
       },
       {
-        path: 'orderSetting',
-        name: 'orderSetting',
-        component: () => import('@/views/oms/order/setting'),
-        meta: {title: '代理商入住', icon: 'order-setting'}
-      },
-      {
         path: 'returnApply',
         name: 'returnApply',
         component: () => import('@/views/oms/apply/index'),
         meta: {title: '代理商收支明细', icon: 'order-return'}
+      },
+      {
+        path: 'orderDetail',
+        name: 'orderDetail',
+        component: () => import('@/views/oms/order/orderDetail'),
+        meta: {title: '代理商日收益明细', icon: 'order-return-reason'},
+      },
+      {
+        path: 'orderSetting',
+        name: 'orderSetting',
+        component: () => import('@/views/oms/order/setting'),
+        meta: {title: '代理商入驻', icon: 'order-setting'}
+      },
+      {
+        path: 'returnApplyDetail',
+        name: 'returnApplyDetail',
+        component: () => import('@/views/oms/apply/applyDetail'),
+        meta: {title: '提现明细', icon: 'order-return-reason'},
       },
       {
         path: 'returnReason',
@@ -174,12 +179,39 @@ export const asyncRouterMap = [
         component: () => import('@/views/oms/apply/reason'),
         meta: {title: '分润提现', icon: 'order-return-reason'}
       },
+
+    ]
+  },
+  {
+    path:'/combine',
+    component: Layout,
+    redirect: '/ums/admin',
+    name: 'finance',
+    meta: {title: '财务管理', icon: 'ums'},
+    children: [
       {
-        path: 'returnApplyDetail',
-        name: 'returnApplyDetail',
-        component: () => import('@/views/oms/apply/applyDetail'),
-        meta: {title: '退货原因详情'},
-        hidden:true
+        path: 'register',
+        name: 'register',
+        component: () => import('@/views/combine/register/index'),
+        meta: {title: '代理商明细', icon: 'ums-admin'}
+      },
+      {
+        path: 'changeaccount',
+        name: 'changeaccount',
+        component: () => import('@/views/combine/register/index'),
+        meta: {title: '调整余额', icon: 'ums-admin'}
+      },
+      {
+        path: 'show',
+        name: 'show',
+        component: () => import('@/views/ums/admin/index'),
+        meta: {title: '提现明细', icon: 'ums-admin'}
+      },
+      {
+        path: 'show',
+        name: 'show',
+        component: () => import('@/views/ums/admin/index'),
+        meta: {title: '代理商日收益明细', icon: 'ums-admin'}
       }
     ]
   },
@@ -188,7 +220,7 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/sms/coupon',
     name: 'sms',
-    meta: {title: '订单管理', icon: 'sms'},
+    meta: {title: '商务管理', icon: 'sms'},
     children: [
       {
         path: 'flash',
@@ -358,39 +390,7 @@ export const asyncRouterMap = [
       }
     ]
   },
-  {
-    path:'/combine',
-    component: Layout,
-    redirect: '/ums/admin',
-    name: 'finance',
-    meta: {title: '财务管理', icon: 'ums'},
-    children: [
-      {
-        path: 'register',
-        name: 'register',
-        component: () => import('@/views/combine/register/index'),
-        meta: {title: '代理商明细', icon: 'ums-admin'}
-      },
-      {
-        path: 'changeaccount',
-        name: 'changeaccount',
-        component: () => import('@/views/combine/register/index'),
-        meta: {title: '调整余额', icon: 'ums-admin'}
-      },
-      {
-        path: 'show',
-        name: 'show',
-        component: () => import('@/views/ums/admin/index'),
-        meta: {title: '提现明细', icon: 'ums-admin'}
-      },
-      {
-        path: 'show',
-        name: 'show',
-        component: () => import('@/views/ums/admin/index'),
-        meta: {title: '代理商日收益明细', icon: 'ums-admin'}
-      }
-    ]
-  },
+
   {path: '*', redirect: '/404', hidden: true}
 ]
 
