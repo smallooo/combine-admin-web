@@ -59,76 +59,10 @@ export const asyncRouterMap = [
         path: 'updateProduct',
         name: 'updateProduct',
         component: () => import('@/views/pms/product/update'),
-        meta: {title: '修改商品', icon: 'product-add'},
-        hidden: true
+        meta: {title: '商户产品管理', icon: 'product-add'},
+
       },
-      {
-        path: 'productCate',
-        name: 'productCate',
-        component: () => import('@/views/pms/productCate/index'),
-        meta: {title: '商品分类', icon: 'product-cate'}
-      },
-      {
-        path: 'addProductCate',
-        name: 'addProductCate',
-        component: () => import('@/views/pms/productCate/add'),
-        meta: {title: '添加商品分类'},
-        hidden: true
-      },
-      {
-        path: 'updateProductCate',
-        name: 'updateProductCate',
-        component: () => import('@/views/pms/productCate/update'),
-        meta: {title: '修改商品分类'},
-        hidden: true
-      },
-      {
-        path: 'productAttr',
-        name: 'productAttr',
-        component: () => import('@/views/pms/productAttr/index'),
-        meta: {title: '商品类型', icon: 'product-attr'}
-      },
-      {
-        path: 'productAttrList',
-        name: 'productAttrList',
-        component: () => import('@/views/pms/productAttr/productAttrList'),
-        meta: {title: '商品属性列表'},
-        hidden: true
-      },
-      {
-        path: 'addProductAttr',
-        name: 'addProductAttr',
-        component: () => import('@/views/pms/productAttr/addProductAttr'),
-        meta: {title: '添加商品属性'},
-        hidden: true
-      },
-      {
-        path: 'updateProductAttr',
-        name: 'updateProductAttr',
-        component: () => import('@/views/pms/productAttr/updateProductAttr'),
-        meta: {title: '修改商品属性'},
-        hidden: true
-      },
-      {
-        path: 'brand',
-        name: 'brand',
-        component: () => import('@/views/pms/brand/index'),
-        meta: {title: '品牌管理', icon: 'product-brand'}
-      },
-      {
-        path: 'addBrand',
-        name: 'addBrand',
-        component: () => import('@/views/pms/brand/add'),
-        meta: {title: '添加品牌'},
-        hidden: true
-      },
-      {
-        path: 'updateBrand',
-        name: 'updateBrand',
-        component: () => import('@/views/pms/brand/update'),
-        meta: {title: '编辑品牌'},
-        hidden: true
-      }
+
     ]
   },
   {
@@ -142,33 +76,31 @@ export const asyncRouterMap = [
         path: 'order',
         name: 'order',
         component: () => import('@/views/oms/order/index'),
-        meta: {title: '订单列表', icon: 'product-list'}
+        meta: {title: '代理商明细', icon: 'product-list'}
       },
       {
         path: 'orderDetail',
         name: 'orderDetail',
         component: () => import('@/views/oms/order/orderDetail'),
-        meta: {title: '订单详情'},
-        hidden:true
+        meta: {title: '代理商收支明细', icon: 'product-list'},
       },
       {
         path: 'deliverOrderList',
         name: 'deliverOrderList',
         component: () => import('@/views/oms/order/deliverOrderList'),
-        meta: {title: '发货列表'},
-        hidden:true
+        meta: {title: '代理商日收益明细', icon: 'product-list'},
       },
       {
         path: 'orderSetting',
         name: 'orderSetting',
         component: () => import('@/views/oms/order/setting'),
-        meta: {title: '代理商入住', icon: 'order-setting'}
+        meta: {title: '代理商入驻', icon: 'order-setting'}
       },
       {
         path: 'returnApply',
         name: 'returnApply',
         component: () => import('@/views/oms/apply/index'),
-        meta: {title: '代理商收支明细', icon: 'order-return'}
+        meta: {title: '提现明细', icon: 'order-return'}
       },
       {
         path: 'returnReason',
@@ -190,105 +122,76 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/sms/coupon',
     name: 'sms',
-    meta: {title: '订单管理', icon: 'sms'},
+    meta: {title: '商务管理', icon: 'sms'},
     children: [
       {
         path: 'flash',
         name: 'flash',
         component: () => import('@/views/sms/flash/index'),
-        meta: {title: '秒杀活动列表', icon: 'sms-flash'}
+        meta: {title: '商务明细', icon: 'sms-flash'}
       },
       {
         path: 'flashSession',
         name: 'flashSession',
         component: () => import('@/views/sms/flash/sessionList'),
-        meta: {title: '秒杀时间段列表'},
-        hidden:true
+        meta: {title: '商务通道管理', icon: 'sms-flash'},
       },
       {
         path: 'selectSession',
         name: 'selectSession',
         component: () => import('@/views/sms/flash/selectSessionList'),
-        meta: {title: '秒杀时间段选择'},
-        hidden:true
+        meta: {title: '交易量统计', icon: 'sms-flash'},
       },
       {
         path: 'flashProductRelation',
         name: 'flashProductRelation',
         component: () => import('@/views/sms/flash/productRelationList'),
-        meta: {title: '秒杀商品列表'},
-        hidden:true
+        meta: {title: '收支明细', icon: 'sms-flash'},
+      }
+    ]
+  },
+  {
+    path:'/combine',
+    component: Layout,
+    redirect: '/ums/admin',
+    name: 'combine',
+    meta: {title: '财务管理', icon: 'ums'},
+    children: [
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('@/views/combine/register/index'),
+        meta: {title: '交易订单明细', icon: 'ums-admin'}
       },
       {
-        path: 'coupon',
-        name: 'coupon',
-        component: () => import('@/views/sms/coupon/index'),
-        meta: {title: '交易订单明细', icon: 'sms-coupon'}
+        path: 'show',
+        name: 'show',
+        component: () => import('@/views/ums/admin/index'),
+        meta: {title: '订单分润明细', icon: 'ums-admin'}
       },
       {
-        path: 'addCoupon',
-        name: 'addCoupon',
-        component: () => import('@/views/sms/coupon/add'),
-        meta: {title: '添加优惠券'},
-        hidden:true
+        path: 'show',
+        name: 'show',
+        component: () => import('@/views/ums/admin/index'),
+        meta: {title: '对账明细', icon: 'ums-admin'}
       },
       {
-        path: 'updateCoupon',
-        name: 'updateCoupon',
-        component: () => import('@/views/sms/coupon/update'),
-        meta: {title: '修改优惠券'},
-        hidden:true
+        path: 'show',
+        name: 'show',
+        component: () => import('@/views/ums/admin/index'),
+        meta: {title: '生成代理商对账单', icon: 'ums-admin'}
       },
       {
-        path: 'couponHistory',
-        name: 'couponHistory',
-        component: () => import('@/views/sms/coupon/history'),
-        meta: {title: '优惠券领取详情'},
-        hidden:true
+        path: 'show',
+        name: 'show',
+        component: () => import('@/views/ums/admin/index'),
+        meta: {title: '生成商户对账单', icon: 'ums-admin'}
       },
       {
-        path: 'brand',
-        name: 'homeBrand',
-        component: () => import('@/views/sms/brand/index'),
-        meta: {title: '品牌推荐', icon: 'product-brand'}
-      },
-      {
-        path: 'new',
-        name: 'homeNew',
-        component: () => import('@/views/sms/new/index'),
-        meta: {title: '新品推荐', icon: 'sms-new'}
-      },
-      {
-        path: 'hot',
-        name: 'homeHot',
-        component: () => import('@/views/sms/hot/index'),
-        meta: {title: '人气推荐', icon: 'sms-hot'}
-      },
-      {
-        path: 'subject',
-        name: 'homeSubject',
-        component: () => import('@/views/sms/subject/index'),
-        meta: {title: '专题推荐', icon: 'sms-subject'}
-      },
-      {
-        path: 'advertise',
-        name: 'homeAdvertise',
-        component: () => import('@/views/sms/advertise/index'),
-        meta: {title: '订单分润明细', icon: 'sms-ad'}
-      },
-      {
-        path: 'addAdvertise',
-        name: 'addHomeAdvertise',
-        component: () => import('@/views/sms/advertise/add'),
-        meta: {title: '添加广告'},
-        hidden:true
-      },
-      {
-        path: 'updateAdvertise',
-        name: 'updateHomeAdvertise',
-        component: () => import('@/views/sms/advertise/update'),
-        meta: {title: '编辑广告'},
-        hidden:true
+        path: 'show',
+        name: 'show',
+        component: () => import('@/views/ums/admin/index'),
+        meta: {title: '生成平台对账单', icon: 'ums-admin'}
       }
     ]
   },
@@ -357,39 +260,6 @@ export const asyncRouterMap = [
         component: () => import('@/views/ums/resource/categoryList'),
         meta: {title: '资源分类'},
         hidden: true
-      }
-    ]
-  },
-  {
-    path:'/combine',
-    component: Layout,
-    redirect: '/ums/admin',
-    name: 'combine',
-    meta: {title: '财务管理', icon: 'ums'},
-    children: [
-      {
-        path: 'register',
-        name: 'register',
-        component: () => import('@/views/combine/register/index'),
-        meta: {title: '代理商明细', icon: 'ums-admin'}
-      },
-      {
-        path: 'show',
-        name: 'show',
-        component: () => import('@/views/ums/admin/index'),
-        meta: {title: '调整余额', icon: 'ums-admin'}
-      },
-      {
-        path: 'show',
-        name: 'show',
-        component: () => import('@/views/ums/admin/index'),
-        meta: {title: '提现明细', icon: 'ums-admin'}
-      },
-      {
-        path: 'show',
-        name: 'show',
-        component: () => import('@/views/ums/admin/index'),
-        meta: {title: '代理商日收益明细', icon: 'ums-admin'}
       }
     ]
   },
