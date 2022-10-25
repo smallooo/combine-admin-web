@@ -364,7 +364,7 @@ export const asyncRouterMap = [
     path:'/combine',
     component: Layout,
     redirect: '/ums/admin',
-    name: 'combine',
+    name: 'finance',
     meta: {title: '财务管理', icon: 'ums'},
     children: [
       {
