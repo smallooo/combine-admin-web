@@ -55,13 +55,13 @@ export const asyncRouterMap = [
         component: () => import('@/views/pms/product/add'),
         meta: {title: '商户入驻', icon: 'product-add'}
       },
-      {
-        path: 'updateProduct',
-        name: 'updateProduct',
-        component: () => import('@/views/pms/product/update'),
-        meta: {title: '商户产品管理', icon: 'product-add'},
-
-      },
+      // {
+      //   path: 'updateProduct',
+      //   name: 'updateProduct',
+      //   component: () => import('@/views/pms/product/update'),
+      //   meta: {title: '商户产品管理', icon: 'product-add'},
+      //
+      // },
 
     ]
   },
@@ -165,31 +165,31 @@ export const asyncRouterMap = [
       },
       {
         path: 'show',
-        name: 'show',
+        name: 'divideDetail',
         component: () => import('@/views/ums/admin/index'),
         meta: {title: '订单分润明细', icon: 'ums-admin'}
       },
       {
         path: 'show',
-        name: 'show',
+        name: 'billDetail',
         component: () => import('@/views/ums/admin/index'),
         meta: {title: '对账明细', icon: 'ums-admin'}
       },
       {
         path: 'show',
-        name: 'show',
+        name: 'delegateBill',
         component: () => import('@/views/ums/admin/index'),
         meta: {title: '生成代理商对账单', icon: 'ums-admin'}
       },
       {
         path: 'show',
-        name: 'show',
+        name: 'shopOwnerBill',
         component: () => import('@/views/ums/admin/index'),
         meta: {title: '生成商户对账单', icon: 'ums-admin'}
       },
       {
         path: 'show',
-        name: 'show',
+        name: 'platformBill',
         component: () => import('@/views/ums/admin/index'),
         meta: {title: '生成平台对账单', icon: 'ums-admin'}
       }

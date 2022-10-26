@@ -8,13 +8,13 @@
         <el-input  v-model="orderSetting.username" class="input-width" placeholder="代理商的名称"/>
       </el-form-item>
       <el-form-item v-model="orderSetting.flashOrderOvertime" label="上级代理商名称：" prop="flashOrderOvertime">
-        <el-input  class="input-width" placeholder="上级代理商名称"/>
+        <el-input  class="input-width" placeholder="上级代理商名称" disabled/>
       </el-form-item>
       <el-form-item label="上级代理商编号：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
+        <el-input  class="input-width" placeholder="123456" disabled />
       </el-form-item>
       <el-form-item label="代理商证件类型：" prop="flashOrderOvertime">
-        <span>{{ "身份证" }}</span>
+        <el-input  class="input-width" placeholder="身份证" disabled />
       </el-form-item>
       <el-form-item label="身份证号码：" prop="flashOrderOvertime">
         <el-input v-model="orderSetting.idno" class="input-width"/>
@@ -68,12 +68,22 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="银行账户名称：" prop="flashOrderOvertime">
+      <el-form-item label="门店名称：" prop="flashOrderOvertime">
         <el-input v-model="orderSetting.bank_card_name" class="input-width"/>
       </el-form-item>
-      <el-form-item label="银行账户号：" prop="flashOrderOvertime">
+      <el-form-item label="门店省份：" prop="flashOrderOvertime">
         <el-input v-model="orderSetting.card_no" class="input-width"/>
       </el-form-item>
+      <el-form-item label="门店城市：" prop="flashOrderOvertime">
+        <el-input v-model="orderSetting.card_no" class="input-width"/>
+      </el-form-item>
+      <el-form-item label="门店行政区：" prop="flashOrderOvertime">
+        <el-input v-model="orderSetting.card_no" class="input-width"/>
+      </el-form-item>
+      <el-form-item label="门店详细地址：" prop="flashOrderOvertime">
+        <el-input v-model="orderSetting.card_no" class="input-width"/>
+      </el-form-item>
+
 
       <el-form-item label="身份证照片上传：" prop="flashOrderOvertime">
 
@@ -87,21 +97,90 @@
           :on-remove="handleRemove"
           :on-success="handleUploadSuccess"
           :on-preview="handlePreview">
-          <span>{{ "正面:   " }}</span>
+            <span>{{ "正面: " }}</span>
         <el-button size="small" type="primary">点击上传</el-button>
         </el-upload>
 
-        <span>{{ "反面:   " }}</span>
-        <el-button size="small" type="primary">点击上传</el-button>
+
+        <el-upload
+          :action="useOss?ossUploadUrl:minioUploadUrl"
+          :data="useOss?dataObj:null"
+          list-type="picture"
+          :multiple="false" :show-file-list="showFileList"
+          :file-list="fileList"
+          :before-upload="beforeUpload"
+          :on-remove="handleRemove"
+          :on-success="handleUploadSuccess"
+          :on-preview="handlePreview">
+          <span>{{ "反面: " }}</span>
+            <el-button size="small" type="primary">点击上传</el-button>
+        </el-upload>
       </el-form-item>
 
       <el-form-item label="银行卡照片上传：" prop="flashOrderOvertime">
-        <span>{{ "正面:   " }}</span>
-        <el-button size="small" type="primary">点击上传</el-button>
 
-        <span>{{ "反面:   " }}</span>
-        <el-button size="small" type="primary">点击上传</el-button>
+        <el-upload
+          :action="useOss?ossUploadUrl:minioUploadUrl"
+          :data="useOss?dataObj:null"
+          list-type="picture"
+          :multiple="false" :show-file-list="showFileList"
+          :file-list="fileList"
+          :before-upload="beforeUpload"
+          :on-remove="handleRemove"
+          :on-success="handleUploadSuccess"
+          :on-preview="handlePreview">
+          <span>{{ "正面:" }}</span>
+          <el-button size="small" type="primary">点击上传</el-button>
+        </el-upload>
+
+
+        <el-upload
+          :action="useOss?ossUploadUrl:minioUploadUrl"
+          :data="useOss?dataObj:null"
+          list-type="picture"
+          :multiple="false" :show-file-list="showFileList"
+          :file-list="fileList"
+          :before-upload="beforeUpload"
+          :on-remove="handleRemove"
+          :on-success="handleUploadSuccess"
+          :on-preview="handlePreview">
+          <span>{{ "反面:" }}</span>
+          <el-button size="small" type="primary">点击上传</el-button>
+        </el-upload>
       </el-form-item>
+
+      <el-form-item label="门店场所照信息：" prop="flashOrderOvertime">
+
+        <el-upload
+          :action="useOss?ossUploadUrl:minioUploadUrl"
+          :data="useOss?dataObj:null"
+          list-type="picture"
+          :multiple="false" :show-file-list="showFileList"
+          :file-list="fileList"
+          :before-upload="beforeUpload"
+          :on-remove="handleRemove"
+          :on-success="handleUploadSuccess"
+          :on-preview="handlePreview">
+          <span>{{ "门店门头照信息或摊位照:" }}</span>
+          <el-button size="small" type="primary">点击上传</el-button>
+        </el-upload>
+
+
+        <el-upload
+          :action="useOss?ossUploadUrl:minioUploadUrl"
+          :data="useOss?dataObj:null"
+          list-type="picture"
+          :multiple="false" :show-file-list="showFileList"
+          :file-list="fileList"
+          :before-upload="beforeUpload"
+          :on-remove="handleRemove"
+          :on-success="handleUploadSuccess"
+          :on-preview="handlePreview">
+          <span>{{ "门店店内照片或者摊位照侧面:" }}</span>
+          <el-button size="small" type="primary">点击上传</el-button>
+        </el-upload>
+      </el-form-item>
+
 
       <el-form-item>
         <el-button
@@ -130,18 +209,18 @@
     detailaddr: "detailaddr",
     mobileno: "mobileno",
     idno: "idno",
-    card_prov: "",
-    card_area: "",
-    cert_validity_type: "",
+    id_prov: "",
+    id_area: "",
+    id_district: "",
+    cert_validity_type: "", //持卡人证件有效期类型  “0”      “1”
     cert_begin_data: "",
     cert_end_date: "",
 
-    prov_id: "",
-    area_id: "",
-    card_name: "",
-    card_no: "",
-    bank_name: "",
-    bank_card_name:"",
+    card_prov: "",
+    card_area: "",
+    card_name: "",   //结算账户名
+    card_no: "",     //结算账号
+    bank_name_id: "",
     card_binding_phone_no: "",
     id_img_front: "",
     id_img_back: "",
