@@ -116,47 +116,11 @@
               size="mini"
               @click="handleViewOrder(scope.$index, scope.row)"
             >新增下级代理</el-button>
-<!--            <el-button-->
-<!--              size="mini"-->
-<!--              @click="handleCloseOrder(scope.$index, scope.row)"-->
-<!--              v-show="scope.row.status===0">关闭订单</el-button>-->
-<!--            <el-button-->
-<!--              size="mini"-->
-<!--              @click="handleDeliveryOrder(scope.$index, scope.row)"-->
-<!--              v-show="scope.row.status===1">订单发货</el-button>-->
-<!--            <el-button-->
-<!--              size="mini"-->
-<!--              @click="handleViewLogistics(scope.$index, scope.row)"-->
-<!--              v-show="scope.row.status===2||scope.row.status===3">订单跟踪</el-button>-->
-<!--            <el-button-->
-<!--              size="mini"-->
-<!--              type="danger"-->
-<!--              @click="handleDeleteOrder(scope.$index, scope.row)"-->
-<!--              v-show="scope.row.status===4">删除订单</el-button>-->
           </template>
         </el-table-column>
       </el-table>
     </div>
-<!--    <div class="batch-operate-container">-->
-<!--      <el-select-->
-<!--        size="small"-->
-<!--        v-model="operateType" placeholder="批量操作">-->
-<!--        <el-option-->
-<!--          v-for="item in operateOptions"-->
-<!--          :key="item.value"-->
-<!--          :label="item.label"-->
-<!--          :value="item.value">-->
-<!--        </el-option>-->
-<!--      </el-select>-->
-<!--      <el-button-->
-<!--        style="margin-left: 20px"-->
-<!--        class="search-button"-->
-<!--        @click="handleBatchOperate()"-->
-<!--        type="primary"-->
-<!--        size="small">-->
-<!--        确定-->
-<!--      </el-button>-->
-<!--    </div>-->
+
     <div class="pagination-container">
       <el-pagination
         background

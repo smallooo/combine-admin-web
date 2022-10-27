@@ -8,7 +8,7 @@ export function getOrderSetting(id) {
 
 export function createDelegateUser(id,data) {
   return request({
-    url:'/hfshanghu/createuser/',
+    url:'/user/createdelegate/',
     method:'post',
     data:data
   })

@@ -13,18 +13,36 @@
       <el-form-item label="上级代理商编号：" prop="flashOrderOvertime">
         <el-input  class="input-width" placeholder="123456" disabled />
       </el-form-item>
+
+      <el-form-item label="账号名称：" prop="flashOrderOvertime">
+        <el-input  v-model="orderSetting.username" class="input-width" placeholder="123456"  />
+      </el-form-item>
+
+      <el-form-item label="密码：" prop="flashOrderOvertime">
+        <el-input  v-model="orderSetting.password" class="input-width" placeholder="123456"  />
+      </el-form-item>
       <el-form-item label="代理商证件类型：" prop="flashOrderOvertime">
         <el-input  class="input-width" placeholder="身份证" disabled />
       </el-form-item>
-      <el-form-item label="身份证号码：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.idno" class="input-width"/>
+      <el-form-item label="是否长期有效">
+        <el-radio-group v-model="orderSetting.cert_validity_type">
+          <el-radio v-model = "orderSetting.cert_validity_type" :label="0">短期</el-radio>
+          <el-radio v-model = "orderSetting.cert_validity_type" :label="1">长期</el-radio>
+        </el-radio-group>
       </el-form-item>
-      <el-form-item label="证件有效期：" prop="flashOrderOvertime">
+
+      <el-form-item label="证件有效期：" prop="flashOrderOvertime"  v-show = !orderSetting.cert_validity_type>
         <span>{{ "从:   " }}</span><el-input v-model="orderSetting.cert_begin_data" class="input-width-small"/>
         <el-row/>
         <span>{{ "到:   " }}</span><el-input v-model="orderSetting.cert_end_date" class="input-width-small"/>
       </el-form-item>
 
+      <el-form-item label="姓名：" prop="flashOrderOvertime">
+        <el-input v-model="orderSetting.idname" class="input-width"/>
+      </el-form-item>
+      <el-form-item label="身份证号码：" prop="flashOrderOvertime">
+        <el-input v-model="orderSetting.idno" class="input-width"/>
+      </el-form-item>
 
       <el-form-item label="手机号：" prop="flashOrderOvertime">
         <el-input v-model="orderSetting.mobileno" class="input-width"/>
@@ -36,28 +54,22 @@
         <el-input v-model="orderSetting.idname" class="input-width"/>
       </el-form-item>
       <el-form-item label="商户经营省：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.prov" class="input-width"/>
+        <el-input v-model="orderSetting.bussines_prov" class="input-width"/>
       </el-form-item>
       <el-form-item label="商户经营市：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.area" class="input-width"/>
+        <el-input v-model="orderSetting.bussines_area" class="input-width"/>
       </el-form-item>
       <el-form-item label="商户经营区：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.district" class="input-width"/>
+        <el-input v-model="orderSetting.bussines_district" class="input-width"/>
       </el-form-item>
       <el-form-item label="详细地址：" prop="flashOrderOvertime">
         <el-input v-model="orderSetting.detailaddr" class="input-width"/>
       </el-form-item>
 
-      <el-form-item label="状态：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>
-      </el-form-item>
+<!--      <el-form-item label="状态：" prop="flashOrderOvertime">-->
+<!--        <el-input v-model="orderSetting.flashOrderOvertime" class="input-width"/>-->
+<!--      </el-form-item>-->
 
-      <el-form-item label="开户所在省：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.card_prov" class="input-width"/>
-      </el-form-item>
-      <el-form-item label="开户所在市：" prop="flashOrderOvertime">
-        <el-input v-model="orderSetting.card_area" class="input-width"/>
-      </el-form-item>
       <el-form-item label="开户银行名称：" prop="flashOrderOvertime">
         <el-select v-model="orderSetting.bank_name"  placeholder="请选择" size="small" style="width: 80%">
           <el-option
@@ -68,6 +80,14 @@
           </el-option>
         </el-select>
       </el-form-item>
+      <el-form-item label="开户所在省：" prop="flashOrderOvertime">
+        <el-input v-model="orderSetting.card_prov" class="input-width"/>
+      </el-form-item>
+      <el-form-item label="开户所在市：" prop="flashOrderOvertime">
+        <el-input v-model="orderSetting.card_area" class="input-width"/>
+      </el-form-item>
+
+
       <el-form-item label="门店名称：" prop="flashOrderOvertime">
         <el-input v-model="orderSetting.bank_card_name" class="input-width"/>
       </el-form-item>
@@ -203,16 +223,16 @@
     email: "email",
     nickName: "nickName",
     idname: "idname",
-    prov: "prov",
-    area: "area",
-    district: "district",
+    bussines_prov: "prov",
+    bussines_area: "area",
+    bussines_district: "district",
     detailaddr: "detailaddr",
     mobileno: "mobileno",
     idno: "idno",
+    cert_validity_type: "1",   //持卡人证件有效期类型  “0”      “1”
     id_prov: "",
     id_area: "",
     id_district: "",
-    cert_validity_type: "", //持卡人证件有效期类型  “0”      “1”
     cert_begin_data: "",
     cert_end_date: "",
 
