@@ -5,7 +5,7 @@
     </el-button>
     <el-dialog append-to-body :visible.sync="dialogVisible">
       <el-upload class="editor-slide-upload"
-                 action="http://hfc-oss.oss-cn-shanghai.aliyuncs.com"
+                 action="http://cifs.oss-cn-hangzhou.aliyuncs.com"
                  :data="dataObj"
                  :multiple="true"
                  :file-list="fileList"
